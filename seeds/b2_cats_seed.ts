@@ -6,17 +6,17 @@ export async function seed(knex: Knex): Promise<void> {
 
   // Inserts seed entries
   await knex("owners").insert([
-    { id: 1, name: "owner1", age: 1 },
-    { id: 2, name: "owner2", age: 2 },
-    { id: 3, name: "owner3", age: 3 },
+    { id: "7ad5294b-92c4-42b1-8438-45b0d521cc35", name: "owner1", age: 1 },
+    { id: "7ad5294b-92c4-42b1-8438-45b0d521cc36", name: "owner2", age: 2 },
+    { id: "7ad5294b-92c4-42b1-8438-45b0d521cc37", name: "owner3", age: 3 },
   ]);
 
   await knex("cats").del();
 
   // Inserts seed entries
   await knex("cats").insert([
-    { id: 1, name: "cat1", age: 1, ownerId: 1 },
-    { id: 2, name: "cat2", age: 2, ownerId: 2 },
-    { id: 3, name: "cat3", age: 3, ownerId: 3 },
+    { name: "cat1", age: 1, ownerId: "7ad5294b-92c4-42b1-8438-45b0d521cc35" },
+    { name: "cat2", age: 2, ownerId: "7ad5294b-92c4-42b1-8438-45b0d521cc35" },
+    { name: "cat3", age: 3, ownerId: "7ad5294b-92c4-42b1-8438-45b0d521cc35" },
   ]);
 }

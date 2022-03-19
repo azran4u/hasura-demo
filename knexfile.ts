@@ -6,9 +6,10 @@ const knexfile: Record<string, KnexConfig> = {
   development: {
     client: "postgresql",
     connection: {
+      host: "172.23.0.2",
       database: "postgres",
       user: "postgres",
-      password: "postgres",
+      password: "postgrespassword",
     },
     useNullAsDefault: true,
     pool: {
@@ -18,23 +19,7 @@ const knexfile: Record<string, KnexConfig> = {
     migrations: {
       tableName: "knex_migrations",
     },
-  },
-
-  production: {
-    client: "postgresql",
-    connection: {
-      database: "my_db",
-      user: "username",
-      password: "password",
-    },
-    pool: {
-      min: 2,
-      max: 10,
-    },
-    migrations: {
-      tableName: "knex_migrations",
-    },
-  },
+  }
 };
 
 module.exports = knexfile;

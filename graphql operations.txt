@@ -1,0 +1,70 @@
+query allCats {
+  cats {
+    id
+    name
+    owner {
+      id
+      name
+      updated_at
+    }
+  }
+}
+
+query allOwners {
+  owners {
+    id
+    name
+    age
+  }
+}
+
+mutation addCat {
+  insert_cats(objects: [{age: 1, name: "cat1", ownerId: "7ad5294b-92c4-42b1-8438-45b0d521cc35"}]) {
+    returning {
+      id
+    }
+  }
+}
+
+mutation deleteCat {
+  delete_cats(where: {id: {_eq: "f7d2f447-4fc8-4233-a2a9-87c3fcbc91e1"}}) {
+    returning {
+      id
+    }
+  }
+}
+
+mutation addOwner {
+  insert_owners(objects: {name: "guy", age: 20}) {
+    returning {
+      id
+    }
+  }
+}
+
+subscription ownersAgeOver18 {
+  owners(where: {age: {_gte: 18}}) {
+    id
+    name
+    age
+    updated_at
+  }
+}
+
+query ownersById {
+  owners(where: {id: {_in: ["f017cbc3-6ad2-4841-b8e4-6eb1a54044fb", "804973f1-52c1-4391-b038-0527d77622bf"]}}) {
+    id
+    name
+    age
+    cats {
+      id
+    }
+  }
+}
+
+subscription catsById {
+  cats(where: {id: {_in: ["dd9b8174-9d09-496b-9245-658c59ce6f55"]}}) {
+    id
+    updated_at
+  }
+}
