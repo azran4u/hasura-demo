@@ -6,7 +6,7 @@ const knexfile: Record<string, KnexConfig> = {
   development: {
     client: "postgresql",
     connection: {
-      host: "172.23.0.2",
+      host: "172.24.0.2",
       database: "postgres",
       user: "postgres",
       password: "postgrespassword",
